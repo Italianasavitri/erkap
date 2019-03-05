@@ -72,7 +72,8 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
         this.role = {
           visi_id: respRole.d.visi_id,
           visi: respRole.d.visi,
-          urutan: parseInt(nilai),
+          //urutan: parseInt(nilai),s
+          urutan: respRole.d.urutan,
         };
         // this.newValue = respRole.d.isallowregistration;
 

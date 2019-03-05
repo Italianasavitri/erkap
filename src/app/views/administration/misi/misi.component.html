@@ -90,7 +90,7 @@
 
       </div>
       <div *ngIf="addVisible">
-        <app-add-visi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-visi>
+        <app-add-misi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-misi>
       </div>
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>

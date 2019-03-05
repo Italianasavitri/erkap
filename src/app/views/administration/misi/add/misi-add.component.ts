@@ -13,7 +13,7 @@ import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFor
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
  @Component({
-   selector: 'app-add-visi',
+   selector: 'app-add-misi',
    templateUrl: './misi-add.component.html',
    providers: []
  })
@@ -72,7 +72,8 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
         this.role = {
           misi_id: respRole.d.misi_id,
           misi: respRole.d.misi,
-          urutan: parseInt(nilai),
+          //urutan: parseInt(nilai),
+          urutan: respRole.d.urutan,
         };
         // this.newValue = respRole.d.isallowregistration;
 
