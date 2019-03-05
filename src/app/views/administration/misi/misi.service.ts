@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { AppConstant } from '../../../app.constant';
 import { Misi, KategoriAktif } from './misi.model';
 
+const simpleProducts: string[] = [ 'Y', 'N' ];
+
 @Injectable()
 export class MisiService {
   private resourceUrlRole = this.a.SERVER_URL + '/system/Misi';
@@ -11,6 +13,10 @@ export class MisiService {
   private resourceUrlMenu = this.a.SERVER_URL + '/menu_tab';
 
   constructor(private http: HttpClient, private a: AppConstant) {}
+
+  getSimpleProducts(): string[] {
+    return simpleProducts;
+  }
 
   getById(id: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -21,6 +27,17 @@ export class MisiService {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     return this.http.post < any > (this.resourceUrlRole + '/table', {
+      username : username,
+      token : token
+    })
+  }
+
+  getLimit(offset,limit): Observable<any> {
+    offset = Number(offset)*Number(limit);
+    const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
+    console.log(this.resourceUrlRole + '/table?offset=' + offset + '&limit='+limit);
+    return this.http.post < any > (this.resourceUrlRole+'/table?offset='+offset+'&limit='+limit, {
       username : username,
       token : token
     })

@@ -34,6 +34,17 @@ export class VisiService {
     })
   }
 
+  getLimit(offset,limit): Observable<any> {
+    offset = Number(offset)*Number(limit);
+    const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
+    console.log(this.resourceUrlRole + '/table?offset=' + offset + '&limit='+limit);
+    return this.http.post < any > (this.resourceUrlRole+'/table?offset='+offset+'&limit='+limit, {
+      username : username,
+      token : token
+    })
+  }
+
   save(data: Visi): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');

@@ -4,20 +4,20 @@ import {
   Output,
   EventEmitter, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ContentChildren, AfterContentChecked, AfterContentInit
  } from '@angular/core';
-import {VisiService} from '../visi.service';
+import {MisiService} from '../misi.service';
 // import { AddRoleService } from './role-add.service';
 
-import {Menu, Visi, KategoriAktif} from '../visi.model';
+import {Menu, Misi, KategoriAktif} from '../misi.model';
 import notify from 'devextreme/ui/notify';
 import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
  @Component({
    selector: 'app-add-visi',
-   templateUrl: './visi-add.component.html',
+   templateUrl: './misi-add.component.html',
    providers: []
  })
- export class AddVisiComponent implements OnInit, AfterViewInit, AfterContentInit {
+ export class AddMisiComponent implements OnInit, AfterViewInit, AfterContentInit {
    @Input() isEdit;
    @Input() isDetail;
    @Input() editItem;
@@ -29,7 +29,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    @ContentChildren(DxiItemComponent) kontens: QueryList<DxiItemComponent>;
 
    //model
-   role: Visi;
+   role: Misi;
    isallowregistration: boolean;
    simpleProducts: string[];
    daftarKategori: KategoriAktif[];
@@ -51,12 +51,12 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
      closeOnBackButton: true,
    };
 
-   constructor(private visiService: VisiService) {
-     this.simpleProducts = visiService.getSimpleProducts();
+   constructor(private misiService: MisiService) {
+     this.simpleProducts = misiService.getSimpleProducts();
      
      this.role = {
-       	visi_id: null,
-    		visi: null,
+       	misi_id: null,
+    		misi: null,
     		urutan: null,
     };
    }
@@ -65,13 +65,13 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
     if (this.isEdit || this.isDetail) {
       const today = new Date().toISOString().slice(0, 10);
       const username = localStorage.getItem('username');
-      this.visiService.getById(this.editItem).subscribe(respRole => {
+      this.misiService.getById(this.editItem).subscribe(respRole => {
         console.log(respRole);
         console.log(this.editItem);
-        const nilai: string = respRole.d.visi_id;
+        const nilai: string = respRole.d.msisi_id;
         this.role = {
-          visi_id: respRole.d.visi_id,
-          visi: respRole.d.visi,
+          misi_id: respRole.d.misi_id,
+          misi: respRole.d.misi,
           urutan: parseInt(nilai),
         };
         // this.newValue = respRole.d.isallowregistration;
@@ -79,8 +79,8 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
       })
     } else { // New Record
       this.role = {
-        visi_id: null,
-        visi: null,
+        misi_id: null,
+        misi: null,
         urutan: null,
       };
 
@@ -149,8 +149,8 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
      this.role.urutan = nilai.toString();
      let success = false;
      if (!this.isEdit) {
-       this.role.visi_id = null;
-       this.visiService.save(this.role).subscribe(resp => {
+       this.role.misi_id = null;
+       this.misiService.save(this.role).subscribe(resp => {
          console.log(resp);
          success = true;
          this.menuTree.forEach(menuItem => {
@@ -162,7 +162,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
              if (menuItem.write) {
                write = 'Y';
              }
-             this.visiService.saveRoleAuth({
+             this.misiService.saveRoleAuth({
                read: read,
                write: write,
                menuTab: {id: menuItem.menuId},
@@ -176,7 +176,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
          if (success) {
            // this.options.message = 'Role saved';
            // notify(this.options, 'success', 3000);
-           notify({message: 'Visi berhasil disimpan', position: {my: 'center top', at: 'center top'}},
+           notify({message: 'Misi berhasil disimpan', position: {my: 'center top', at: 'center top'}},
             'success', 3000);
            this.hide();
          } else {
@@ -188,7 +188,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
          notify(this.options, 'error', 3000);
        })
      } else {
-       this.visiService.update(this.role).subscribe(resp => {
+       this.misiService.update(this.role).subscribe(resp => {
         console.log(this.role);
         success = true;
 
@@ -203,7 +203,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
              }
 
              if (typeof menuItem.authId === 'undefined') {
-              this.visiService.saveRoleAuth({
+              this.misiService.saveRoleAuth({
                 read: read,
                 write: write,
                 menuTab: { id: menuItem.menuId },
@@ -212,7 +212,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
                 success = false;
               })
             } else {
-              this.visiService.updateRoleAuth({
+              this.misiService.updateRoleAuth({
                 authId: menuItem.authId,
                 read: read,
                 write: write,
@@ -224,7 +224,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
             }
            } else {
              if (typeof menuItem.authId !== 'undefined') {
-               this.visiService.deleteRoleAuth(menuItem.authId).subscribe(() => { }, () => {
+               this.misiService.deleteRoleAuth(menuItem.authId).subscribe(() => { }, () => {
                  success = false;
                });
              }
@@ -232,7 +232,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
          });
 
          if (success) {
-           this.options.message = 'Visi updated';
+           this.options.message = 'Misi updated';
            notify(this.options, 'success', 3000);
            this.hide();
          } else {

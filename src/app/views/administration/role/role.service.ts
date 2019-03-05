@@ -44,6 +44,17 @@ export class RoleService {
     })
   }
 
+  getLimit(offset,limit): Observable<any> {
+    offset = Number(offset)*Number(limit);
+    const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
+    console.log(this.resourceUrlVisi + '/table?offset=' + offset + '&limit='+limit);
+    return this.http.post < any > (this.resourceUrlVisi+'/table?offset='+offset+'&limit='+limit, {
+      username : username,
+      token : token
+    })
+  }
+
   save(data: Role): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');

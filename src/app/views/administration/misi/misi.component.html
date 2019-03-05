@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
     <div class="card-header">
-      <strong>Visi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>Misi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -48,9 +48,9 @@
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="Role" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="misi_id" width="90px" caption="Misi Id" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="misi" width="140px" caption="Misi" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="urutan" caption="Urutan" width="170px" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="misi_id" width="100px" caption="Misi Id" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="misi" width="700px" caption="Misi" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="urutan" caption="Urutan" [allowEditing]="false"></dxi-column>
            
             <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
@@ -62,6 +62,32 @@
           <app-context [menuVisible]="menuVisible" [target]="target" [contextItems]="contextItems" (onHideMenu)="onHideMenu()" (itemClick)="itemClick($event)"></app-context>
           <app-progress [progressVisible]="progressVisible" [progressContent]="progressContent" [progressTitle]="progressTitle" (onHideProgresss)="onHideProgress()"></app-progress>
         </div>
+
+        <!-- pagination -->
+        <div class="row">
+          <div class="col-sm-10">
+          <ul class="pagination">
+            <li class="page-item" (click)="prev()" id="prev"><a class="page-link" >Prev</a></li>
+            <div *ngFor="let item of fakeArray; index as i; trackBy: trackByFn">
+              <div *ngIf="i+1>=minLimitShow && i+1<=maxLimitShow">
+                <li [ngClass]="page==i+1 ? 'page-item active' : 'page-item'" ><a class="page-link" id="{{ i }}" (click)="doneClick($event)">{{ i+1 }}</a></li>
+              </div>
+            </div>
+            <li class="page-item" (click)="next()" id="next"><a class="page-link">Next</a></li>
+          </ul>
+          <p>Halaman {{ page }} dari {{ jumlahHal }}</p>
+          </div>
+          <div class="col-sm-2"><br>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" id="5" (click)="limit($event)"
+              [ngClass]="activeClass==5 ? 'btn btn-secondary' : 'btn' ">5</button>
+              <button type="button" id="10" (click)="limit($event)" [ngClass]="activeClass==10 ? 'btn btn-secondary' : 'btn' ">10</button>
+              <button type="button" id="15" (click)="limit($event)" [ngClass]="activeClass==15 ? 'btn btn-secondary' : 'btn' ">15</button>
+            </div>
+          </div>
+        </div> 
+        <!-- end pagination -->
+
       </div>
       <div *ngIf="addVisible">
         <app-add-visi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-visi>

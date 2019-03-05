@@ -58,6 +58,7 @@ import { AddSysMenuComponent } from './sys-menu/add/sys-menu-add.component';
 import { VisiComponent } from './visi/visi.component';
 import { AddVisiComponent } from './visi/add/visi-add.component';
 import { MisiComponent } from './misi/misi.component';
+import { AddMisiComponent } from './misi/add/misi-add.component';
 import { RolemenuComponent } from './rolemenu/rolemenu.component';
 import { AddRolemenuComponent } from './rolemenu/add/rolemenu-add.component';
 
@@ -102,6 +103,7 @@ import { AddRolemenuComponent } from './rolemenu/add/rolemenu-add.component';
     VisiComponent,
     AddVisiComponent,
     MisiComponent,
+    AddMisiComponent,
     RolemenuComponent,
     AddRolemenuComponent
   ],
