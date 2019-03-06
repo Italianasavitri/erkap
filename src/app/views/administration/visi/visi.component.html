@@ -11,7 +11,7 @@
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
           <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item dataField="menu_address" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
+              <dxi-item dataField="visi" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
               <dxi-item [colSpan]="1">
                 <dx-button icon="search" text="Search" (onClick)="searching()"></dx-button>
                 <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
@@ -22,9 +22,9 @@
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="menu_id" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="menu_address" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="menu_description" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="visi_id" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="visi" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="urutan" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <!--<dxi-item dataField="menu" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>-->
               </dxi-item>
               <dxi-item itemType="group">
