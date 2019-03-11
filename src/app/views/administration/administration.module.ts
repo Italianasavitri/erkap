@@ -66,6 +66,7 @@ import { RKAPComponent } from './rkap/rkap.component';
 import { RjppComponent } from './rjpp/rjpp.component';
 import { GroupProductComponent } from './group-product/group-product.component';
 import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
+import { AddComponent } from './group-product/add/add.component';
 
 @NgModule({
   imports: [
@@ -115,7 +116,8 @@ import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
     RKAPComponent,
     RjppComponent,
     GroupProductComponent,
-    ProgramKerjaComponent
+    ProgramKerjaComponent,
+    AddComponent
   ],
   exports: [
   ],
