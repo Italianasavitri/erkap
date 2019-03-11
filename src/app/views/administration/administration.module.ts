@@ -61,6 +61,11 @@ import { MisiComponent } from './misi/misi.component';
 import { AddMisiComponent } from './misi/add/misi-add.component';
 import { RolemenuComponent } from './rolemenu/rolemenu.component';
 import { AddRolemenuComponent } from './rolemenu/add/rolemenu-add.component';
+import { SasaranComponent } from './sasaran/sasaran.component';
+import { RKAPComponent } from './rkap/rkap.component';
+import { RjppComponent } from './rjpp/rjpp.component';
+import { GroupProductComponent } from './group-product/group-product.component';
+import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
 
 @NgModule({
   imports: [
@@ -105,7 +110,12 @@ import { AddRolemenuComponent } from './rolemenu/add/rolemenu-add.component';
     MisiComponent,
     AddMisiComponent,
     RolemenuComponent,
-    AddRolemenuComponent
+    AddRolemenuComponent,
+    SasaranComponent,
+    RKAPComponent,
+    RjppComponent,
+    GroupProductComponent,
+    ProgramKerjaComponent
   ],
   exports: [
   ],
