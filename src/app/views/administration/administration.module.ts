@@ -48,7 +48,7 @@ import {
 import { RoleComponent } from './role/role.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from 'app/views/administration/user/add/user-add.component';
-import {AddRoleComponent} from './role/add/role-add.component';
+import { AddRoleComponent} from './role/add/role-add.component';
 import { AddAssetBrandComponent } from 'app/views/administration/master_asset/add_assetbrand/brand-add.component';
 import { AddManufactureComponent } from 'app/views/administration/master_asset/add_manufacture/manufacture-add.component';
 import { AddTypeComponent } from 'app/views/administration/master_asset/add_type/type-add.component';
@@ -66,7 +66,6 @@ import { RKAPComponent } from './rkap/rkap.component';
 import { RjppComponent } from './rjpp/rjpp.component';
 import { GroupProductComponent } from './group-product/group-product.component';
 import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
-import { AddComponent } from './group-product/add/add.component';
 
 @NgModule({
   imports: [
@@ -116,8 +115,7 @@ import { AddComponent } from './group-product/add/add.component';
     RKAPComponent,
     RjppComponent,
     GroupProductComponent,
-    ProgramKerjaComponent,
-    AddComponent
+    ProgramKerjaComponent
   ],
   exports: [
   ],
