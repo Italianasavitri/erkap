@@ -68,7 +68,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
       this.misiService.getById(this.editItem).subscribe(respRole => {
         console.log(respRole);
         console.log(this.editItem);
-        const nilai: string = respRole.d.msisi_id;
+        const nilai: string = respRole.d.misi_id;
         this.role = {
           misi_id: respRole.d.misi_id,
           misi: respRole.d.misi,
