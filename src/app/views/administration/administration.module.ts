@@ -66,6 +66,11 @@ import { RKAPComponent } from './rkap/rkap.component';
 import { RjppComponent } from './rjpp/rjpp.component';
 import { GroupProductComponent } from './group-product/group-product.component';
 import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
+import { AddSasaranComponent } from './sasaran/add-sasaran/add-sasaran.component';
+import { AddGroupProductComponent } from './group-product/add-group-product/add-group-product.component';
+import { AddProgramKerjaComponent } from './program-kerja/add-program-kerja/add-program-kerja.component';
+import { AddRKAPComponent } from './rkap/add-rkap/add-rkap.component';
+import { AddRJPPComponent } from './rjpp/add-rjpp/add-rjpp.component';
 
 @NgModule({
   imports: [
@@ -115,7 +120,12 @@ import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
     RKAPComponent,
     RjppComponent,
     GroupProductComponent,
-    ProgramKerjaComponent
+    ProgramKerjaComponent,
+    AddSasaranComponent,
+    AddGroupProductComponent,
+    AddProgramKerjaComponent,
+    AddRKAPComponent,
+    AddRJPPComponent
   ],
   exports: [
   ],

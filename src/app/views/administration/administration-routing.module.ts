@@ -8,6 +8,11 @@ import { SysMenuComponent } from './sys-menu/sys-menu.component';
 import { VisiComponent } from './visi/visi.component';
 import { MisiComponent } from './misi/misi.component';
 import { RolemenuComponent } from './rolemenu/rolemenu.component';
+import { SasaranComponent } from './sasaran/sasaran.component';
+import { GroupProductComponent } from './group-product/group-product.component';
+import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
+import { RjppComponent } from './rjpp/rjpp.component';
+import { RKAPComponent } from './rkap/rkap.component';
 
 const routes: Routes = [
   {
@@ -61,6 +66,41 @@ const routes: Routes = [
         component: RolemenuComponent,
         data: {
           title: 'Role Menu Auth'
+        }
+      },
+      {
+        path: 'sasaran',
+        component: SasaranComponent,
+        data: {
+          title: 'Sasaran'
+        }
+      },
+      {
+        path: 'group_product',
+        component: GroupProductComponent,
+        data: {
+          title: 'Group Product'
+        }
+      },
+      {
+        path: 'program_kerja',
+        component: ProgramKerjaComponent,
+        data: {
+          title: 'Program Kerja'
+        }
+      },
+      {
+        path: 'rjpp',
+        component: RjppComponent,
+        data: {
+          title: 'RJPP'
+        }
+      },
+      {
+        path: 'rkap',
+        component: RKAPComponent,
+        data: {
+          title: 'RKAP'
         }
       },
     ]

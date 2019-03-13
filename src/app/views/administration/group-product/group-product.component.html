@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
     <div class="card-header">
-      <strong>Misi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>Group Product <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -46,11 +46,12 @@
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showInfo]="true" [showNavigationButtons]="true">
             </dxo-pager>
-            <dxo-export [enabled]="true" fileName="Misi" [allowExportSelectedData]="false"></dxo-export>
+            <dxo-export [enabled]="true" fileName="Group Product" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="misi_id" width="100px" caption="Misi Id" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="misi" width="700px" caption="Misi" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="urutan" caption="Urutan" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="gid" caption="Group ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="parent_gid" caption="Parent ID" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="kode" caption="Kode" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="nama" caption="Nama" [allowEditing]="false"></dxi-column>
            
             <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
