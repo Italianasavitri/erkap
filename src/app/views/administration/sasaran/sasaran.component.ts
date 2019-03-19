@@ -10,7 +10,8 @@ declare const $: any;
 @Component({
   selector: 'app-sasaran',
   templateUrl: './sasaran.component.html',
-  styleUrls: ['./sasaran.component.scss']
+  styleUrls: ['./sasaran.component.scss'],
+  providers: [SasaranService]
 })
 export class SasaranComponent implements AfterViewInit {
   @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;

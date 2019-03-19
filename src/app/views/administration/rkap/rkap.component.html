@@ -49,10 +49,10 @@
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="RKAP" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="rjppid" caption="RJPP ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="rkapid" caption="RKAP ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sid" caption="Strategi ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="codeid" caption="Code ID" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="rkapid" caption="RKAP ID" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="rjppid" caption="RJPP ID" [allowEditing]="false"></dxi-column>
            
             <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
@@ -92,7 +92,7 @@
 
       </div>
       <div *ngIf="addVisible">
-        <app-add-misi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-misi>
+        <app-add-rkap [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-rkap>
       </div>
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>

@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
     <div class="card-header">
-      <strong>Misi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>Program Kerja <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -11,7 +11,7 @@
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
           <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item dataField="misi" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
+              <dxi-item dataField="nama_program" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
               <dxi-item [colSpan]="1">
                 <dx-button icon="search" text="Search" (onClick)="searching()"></dx-button>
                 <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
@@ -22,9 +22,9 @@
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="misi_id" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="misi" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="urutan" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="codeid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="nama_program" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+                <dxi-item dataField="pic" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <!--<dxi-item dataField="menu" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>-->
               </dxi-item>
               <dxi-item itemType="group">
@@ -58,7 +58,7 @@
             <dxi-column dataField="gid" caption="Group ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="indikator_satuan" caption="Indikator Satuan" [allowEditing]="false"></dxi-column>
            
-            <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
+            <dxi-column [fixed]="true" width="55px" dataField="codeid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">
                 <i class="fa fa-th-large" id="btn{{data.value}}"></i>
@@ -96,7 +96,7 @@
 
       </div>
       <div *ngIf="addVisible">
-        <app-add-misi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-misi>
+        <app-add-program-kerja [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-program-kerja>
       </div>
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
