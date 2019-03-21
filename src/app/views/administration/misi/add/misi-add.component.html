@@ -22,9 +22,9 @@
         </dxi-item>
       </dxi-item>
     </dx-form>
-    <!-- <br>
-    <p>Menu Access :</p> -->
-    <!-- <dx-tree-list
+    <br>
+    <p>Menu Access :</p>
+    <dx-tree-list
       [dataSource]="menuTree"
       itemsExpr="items"
       keyExpr="menuId"
@@ -45,7 +45,7 @@
       <dxi-column dataField="text" caption="Menu" [allowEditing]="false"></dxi-column>
       <dxi-column dataField="read"></dxi-column>
       <dxi-column dataField="write"></dxi-column>
-    </dx-tree-list> -->
+    </dx-tree-list>
     <app-form-confirmation [isSave]="isSave" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="save()" (onHideConf)="onHideConf()"
       (onSaveConf)="onSaveConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
   </form>

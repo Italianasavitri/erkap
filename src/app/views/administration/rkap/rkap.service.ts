@@ -34,8 +34,6 @@ export class RkapService {
   getAll(): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    //http://localhost:9092/system/RoleMenus/table?offset=0&limit=10
-    //http://localhost:9092/system/RoleMenus/table?offset=10&limit=10
     return this.http.post < any > (this.resourceUrlRole + '/table', {
       username : username,
       token : token
@@ -61,7 +59,7 @@ export class RkapService {
     return this.http.post < any > (this.resourceUrlRole + '/insert', data)
   }
 
-  update(data: Rkap ): Observable<any> {
+  update(data: Rkap): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);

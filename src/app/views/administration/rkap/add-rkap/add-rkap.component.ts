@@ -10,6 +10,7 @@ import {Menu, Rkap, KategoriAktif} from '../rkap.model';
 import notify from 'devextreme/ui/notify';
 import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
+import { MatButtonToggleGroupMultiple } from '@angular/material';
 
 
 @Component({
@@ -64,9 +65,9 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
     
     this.role = {
        rkapid: null,
-       rjppid: null,
        sid: null,
        codeid: null,
+       rjppid: null,
    };
   }
 
@@ -79,11 +80,11 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
        console.log(this.editItem);
        const nilai: string = respRole.d.rkapid;
        this.role = {
-         rkapid: respRole.d.rkapid,
-         rjppid: respRole.d.rjppid,
-         //urutan: parseInt(nilai),
+         rkapid: respRole.rkapid,
          sid: respRole.d.sid,
+         //urutan: parseInt(nilai),
          codeid: respRole.d.codeid,
+         rjppid: respRole.d.rjppid,
        };
        // this.newValue = respRole.d.isallowregistration;
 
@@ -91,9 +92,9 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
    } else { // New Record
      this.role = {
        rkapid: null,
-       rjppid: null,
        sid: null,
        codeid: null,
+       rjppid:null,
      };
 
      // this.treeList.instance.refresh();
@@ -157,8 +158,10 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
   onSaveConf() {
     this.treeList.instance.saveEditData();
     //console.log('isdisplayed sebelum disave = ' + this.role.isdisplayed);
+    //const nilai: number = this.role.rkapid;
     const nilai: number = this.role.rkapid;
-    this.role.rkapid = nilai.toString();
+    //this.role.rkapid = nilai.toString();
+    this.role.rkapid = nilai
     let success = false;
     if (!this.isEdit) {
       this.role.rkapid = null;

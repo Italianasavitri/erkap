@@ -49,11 +49,11 @@
             <dxo-export [enabled]="true" fileName="Group Product" [allowExportSelectedData]="false"></dxo-export>
 
             <dxi-column dataField="gid" caption="Group ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="parent_gid" caption="Parent ID" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="parent_gid" caption="Parent GID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="kode" caption="Kode" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="nama" caption="Nama" [allowEditing]="false"></dxi-column>
            
-            <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
+            <dxi-column [fixed]="true" width="55px" dataField="gid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">
                 <i class="fa fa-th-large" id="btn{{data.value}}"></i>

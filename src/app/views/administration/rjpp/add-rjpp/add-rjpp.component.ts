@@ -80,7 +80,7 @@ export class AddRJPPComponent implements OnInit, AfterViewInit, AfterContentInit
      this.rjppService.getById(this.editItem).subscribe(respRole => {
        console.log(respRole);
        console.log(this.editItem);
-       const nilai: string = respRole.d.rjppidid;
+       const nilai: string = respRole.d.rjppid;
        this.role = {
          rjppid: respRole.rjppid,
          periode: respRole.d.periode,

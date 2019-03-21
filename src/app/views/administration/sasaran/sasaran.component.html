@@ -1,17 +1,22 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
 
+    <!-- Header Card -->
     <div class="card-header">
       <strong>Sasaran <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
     </div>
+    <!-- End Header Card -->
 
+    <!-- Body -->
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
 
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
+
+          <!-- SEARCH -->
           <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item dataField="sasaran" caption="Sasaran" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
@@ -21,6 +26,8 @@
               </dxi-item>
             </dx-form>
           </div>
+          <!-- END SEARCH -->
+
           <!-- ADVANCED SEARCH -->
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
@@ -111,5 +118,7 @@
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
     </div>
+    <!-- End Body-->
+
   </div>
 </div>

@@ -31,6 +31,7 @@ export class Sasaran {
   export class Search {
     sid: number;
     sasaran : string;
+    jenis_sasaran : string;
     //urutan: string;
   }
   

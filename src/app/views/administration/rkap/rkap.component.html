@@ -1,14 +1,22 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
+
+    <!-- Card Header -->
     <div class="card-header">
       <strong>RKAP <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
     </div>
+    <!-- End Card Header -->
+
+    <!-- Card Body -->
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
+
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
+
+          <!-- Search -->
           <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item dataField="rkapid" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
@@ -18,6 +26,8 @@
               </dxi-item>
             </dx-form>
           </div>
+          <!-- End Search -->
+
           <!-- ADVANCED SEARCH -->
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
@@ -39,6 +49,7 @@
           <!-- END ADVANCED SEARCH -->
         </div>
 
+        <!-- Table -->
         <div id="data-grid-demo" style="margin-top: 20px;">
           <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
                         [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true">
@@ -50,11 +61,11 @@
             <dxo-export [enabled]="true" fileName="RKAP" [allowExportSelectedData]="false"></dxo-export>
 
             <dxi-column dataField="rkapid" caption="RKAP ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="sid" caption="Strategi ID" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="sid" caption="Strategy ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="codeid" caption="Code ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="rjppid" caption="RJPP ID" [allowEditing]="false"></dxi-column>
            
-            <dxi-column [fixed]="true" width="55px" dataField="misi_id" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
+            <dxi-column [fixed]="true" width="55px" dataField="codeid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">
                 <i class="fa fa-th-large" id="btn{{data.value}}"></i>
@@ -64,6 +75,7 @@
           <app-context [menuVisible]="menuVisible" [target]="target" [contextItems]="contextItems" (onHideMenu)="onHideMenu()" (itemClick)="itemClick($event)"></app-context>
           <app-progress [progressVisible]="progressVisible" [progressContent]="progressContent" [progressTitle]="progressTitle" (onHideProgresss)="onHideProgress()"></app-progress>
         </div>
+        <!-- End Table -->
 
         <!-- pagination -->
         <div class="row">
@@ -97,5 +109,7 @@
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
     </div>
+    <!-- End Card Body -->
+
   </div>
 </div>

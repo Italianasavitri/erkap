@@ -13,6 +13,7 @@ declare const $: any;
   styleUrls: ['./sasaran.component.scss'],
   providers: [SasaranService]
 })
+
 export class SasaranComponent implements AfterViewInit {
   @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
 
@@ -50,11 +51,11 @@ export class SasaranComponent implements AfterViewInit {
 
   constructor(
     private elementRef: ElementRef,
-    @Inject(SasaranService) private sasaranService: SasaranService
-  ) {
+    @Inject(SasaranService) private sasaranService: SasaranService) {
     this.search = {
       sid: null,
       sasaran: '',
+      jenis_sasaran: '',
       //urutan: '',
     };
 

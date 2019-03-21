@@ -11,6 +11,7 @@ import {Menu, GroupProduct, KategoriAktif} from '../group-product.model';
 import notify from 'devextreme/ui/notify';
 import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
+import { MatButtonToggleGroupMultiple } from '@angular/material';
 
 @Component({
   selector: 'app-add-group-product',
@@ -158,8 +159,8 @@ export class AddGroupProductComponent implements OnInit, AfterViewInit, AfterCon
     this.treeList.instance.saveEditData();
     this.role.nama = this.role.nama.toUpperCase();
     //console.log('isdisplayed sebelum disave = ' + this.role.isdisplayed);
-    const nilai: string = this.role.nama.toUpperCase();
-    this.role.nama = nilai.toString();
+    const nilai: number = this.role.gid;
+    this.role.gid = nilai;
     let success = false;
     if (!this.isEdit) {
       this.role.gid = null;
