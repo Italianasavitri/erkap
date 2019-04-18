@@ -2,21 +2,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { AppConstant } from '../../../app.constant';
-import { ProgramKerja, KategoriAktif } from './program-kerja.model';
-
-const simpleProducts: string[] = [ 'Y', 'N' ];
+import { GroupTaksonomi, KategoriAktif } from './group-taksonomi.model';
 
 // @Injectable({
 //   providedIn: 'root'
 // })
-// export class ProgramKerjaService {
+// export class GroupTaksonomiService {
 
 //   constructor() { }
 // }
 
+const simpleProducts: string[] = [ 'Y', 'N' ];
+
 @Injectable()
-export class ProgramKerjaService {
-  private resourceUrlRole = this.a.SERVER_URL + '/system/ProgramKerja';
+export class GroupTaksonomiService {
+  private resourceUrlRole = this.a.SERVER_URL + '/system/GroupTaksonomi';
   private resourceUrlRoleAuth = this.a.SERVER_URL + '/role_menu_authorization';
   private resourceUrlMenu = this.a.SERVER_URL + '/menu_tab';
 
@@ -28,7 +28,7 @@ export class ProgramKerjaService {
 
   getById(id: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(this.resourceUrlRole + '/retrieve?token=' + token + '&prkid=' + id)
+    return this.http.get(this.resourceUrlRole + '/retrieve?token=' + token + '&gid=' + id)
   }
 
   getAll(): Observable<any> {
@@ -51,7 +51,7 @@ export class ProgramKerjaService {
     })
   }
 
-  save(data: ProgramKerja): Observable<any> {
+  save(data: GroupTaksonomi): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);
@@ -59,7 +59,7 @@ export class ProgramKerjaService {
     return this.http.post < any > (this.resourceUrlRole + '/insert', data)
   }
 
-  update(data: ProgramKerja): Observable<any> {
+  update(data: GroupTaksonomi): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);
@@ -78,7 +78,7 @@ export class ProgramKerjaService {
     /* data.activationCode = 'N';
     return this.http.put(this.resourceUrlRole + '/' + data.role_id, data)*/
     const token = localStorage.getItem('token');
-    return this.http.get(this.resourceUrlRole + '/delete?token=' + token + '&prkid=' + data.prkid)
+    return this.http.get(this.resourceUrlRole + '/delete?token=' + token + '&gid=' + data.gid)
   }
 
   getByName(roleName: any): Observable<any> {

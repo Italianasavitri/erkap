@@ -167,7 +167,7 @@ export class AddRJPPComponent implements OnInit, AfterViewInit, AfterContentInit
     //const nilai: number = this.role.rjpp_id;
     const nilai: number = this.role.rjppid;
     //this.role.rjppid = nilai.toString();
-    this.role.rjppid = nilai
+    this.role.rjppid = nilai;
     let success = false;
     if (!this.isEdit) {
       this.role.rjppid = null;

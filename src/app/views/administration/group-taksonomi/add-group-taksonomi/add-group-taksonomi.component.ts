@@ -4,19 +4,20 @@ import {
   Output,
   EventEmitter, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ContentChildren, AfterContentChecked, AfterContentInit
  } from '@angular/core';
-import {ProgramKerjaService} from '../program-kerja.service';
+import {GroupTaksonomiService} from '../group-taksonomi.service';
+// import { AddRoleService } from './role-add.service';
 
-import {Menu, ProgramKerja, KategoriAktif} from '../program-kerja.model';
+import {Menu, GroupTaksonomi, KategoriAktif} from '../group-taksonomi.model';
 import notify from 'devextreme/ui/notify';
 import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
 @Component({
-  selector: 'app-add-program-kerja',
-  templateUrl: './add-program-kerja.component.html',
+  selector: 'app-add-group-taksonomi',
+  templateUrl: './add-group-taksonomi.component.html',
   providers: []
 })
-// export class AddProgramKerjaComponent implements OnInit {
+// export class AddGroupTaksonomiComponent implements OnInit {
 
 //   constructor() { }
 
@@ -24,7 +25,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 //   }
 
 // }
-export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AddGroupTaksonomiComponent implements OnInit, AfterViewInit, AfterContentInit {
   @Input() isEdit;
   @Input() isDetail;
   @Input() editItem;
@@ -36,7 +37,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
   @ContentChildren(DxiItemComponent) kontens: QueryList<DxiItemComponent>;
 
   //model
-  role: ProgramKerja;
+  role: GroupTaksonomi;
   isallowregistration: boolean;
   simpleProducts: string[];
   daftarKategori: KategoriAktif[];
@@ -58,21 +59,12 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
     closeOnBackButton: true,
   };
 
-  constructor(private programkerjaService: ProgramKerjaService) {
-    this.simpleProducts = programkerjaService.getSimpleProducts();
+  constructor(private grouptaksonomiService: GroupTaksonomiService) {
+    this.simpleProducts = grouptaksonomiService.getSimpleProducts();
     
     this.role = {
-       rjppid: null,
-       sid: null,
-       prkid: null,
-       nama_program: null,
-       plan_execute: null,
-       pic: null,
-       indikator_hasil: null,
        gid: null,
-       indikator_satuan: null,
-       kode_program: null,
-       deskripsi: null,
+       nama_group: null,
    };
   }
 
@@ -80,40 +72,23 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
    if (this.isEdit || this.isDetail) {
      const today = new Date().toISOString().slice(0, 10);
      const username = localStorage.getItem('username');
-     this.programkerjaService.getById(this.editItem).subscribe(respRole => {
+     this.grouptaksonomiService.getById(this.editItem).subscribe(respRole => {
        console.log(respRole);
        console.log(this.editItem);
-       const nilai: string = respRole.d.codeid;
+       const nilai: string = respRole.d.gid;
        this.role = {
-         rjppid: respRole.d.rjppid,
-         sid: respRole.d.sid,
-         prkid: respRole.d.prkid,
-         nama_program: respRole.d.nama_program,
-         plan_execute: respRole.d.plan_execute,
-         pic: respRole.d.pic,
-         indikator_hasil: respRole.d.indikator_hasil,
          gid: respRole.d.gid,
+         nama_group: respRole.d.nama_group,
          //urutan: parseInt(nilai),
-         indikator_satuan: respRole.d.indikator_satuan,
-         kode_program: respRole.d.kode_program,
-         deskripsi: respRole.d.deskripsi,
+         // urutan: respRole.d.urutan,
        };
        // this.newValue = respRole.d.isallowregistration;
 
      })
    } else { // New Record
      this.role = {
-       rjppid: null,
-       sid: null,
-       prkid: null,
-       nama_program: null,
-       plan_execute: null,
-       pic: null,
-       indikator_hasil: null,
        gid: null,
-       indikator_satuan: null,
-       kode_program: null,
-       deskripsi: null,
+       nama_group: null,
      };
 
      // this.treeList.instance.refresh();
@@ -177,12 +152,12 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
   onSaveConf() {
     this.treeList.instance.saveEditData();
     //console.log('isdisplayed sebelum disave = ' + this.role.isdisplayed);
-    const nilai: number = this.role.prkid;
-    //this.role.codeid = nilai.toString();
+    const nilai: number = this.role.gid;
+    this.role.gid = nilai;
     let success = false;
     if (!this.isEdit) {
-      this.role.prkid = null;
-      this.programkerjaService.save(this.role).subscribe(resp => {
+      this.role.gid = null;
+      this.grouptaksonomiService.save(this.role).subscribe(resp => {
         console.log(resp);
         success = true;
         this.menuTree.forEach(menuItem => {
@@ -194,7 +169,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
             if (menuItem.write) {
               write = 'Y';
             }
-            this.programkerjaService.saveRoleAuth({
+            this.grouptaksonomiService.saveRoleAuth({
               read: read,
               write: write,
               menuTab: {id: menuItem.menuId},
@@ -208,7 +183,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
         if (success) {
           // this.options.message = 'Role saved';
           // notify(this.options, 'success', 3000);
-          notify({message: 'Program Kerja berhasil disimpan', position: {my: 'center top', at: 'center top'}},
+          notify({message: 'Group Taksonomi berhasil disimpan', position: {my: 'center top', at: 'center top'}},
            'success', 3000);
           this.hide();
         } else {
@@ -220,7 +195,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
         notify(this.options, 'error', 3000);
       })
     } else {
-      this.programkerjaService.update(this.role).subscribe(resp => {
+      this.grouptaksonomiService.update(this.role).subscribe(resp => {
        console.log(this.role);
        success = true;
 
@@ -235,7 +210,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
             }
 
             if (typeof menuItem.authId === 'undefined') {
-             this.programkerjaService.saveRoleAuth({
+             this.grouptaksonomiService.saveRoleAuth({
                read: read,
                write: write,
                menuTab: { id: menuItem.menuId },
@@ -244,7 +219,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
                success = false;
              })
            } else {
-             this.programkerjaService.updateRoleAuth({
+             this.grouptaksonomiService.updateRoleAuth({
                authId: menuItem.authId,
                read: read,
                write: write,
@@ -256,7 +231,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
            }
           } else {
             if (typeof menuItem.authId !== 'undefined') {
-              this.programkerjaService.deleteRoleAuth(menuItem.authId).subscribe(() => { }, () => {
+              this.grouptaksonomiService.deleteRoleAuth(menuItem.authId).subscribe(() => { }, () => {
                 success = false;
               });
             }
@@ -264,7 +239,7 @@ export class AddProgramKerjaComponent implements OnInit, AfterViewInit, AfterCon
         });
 
         if (success) {
-          this.options.message = 'Program Kerja updated';
+          this.options.message = 'Group Taksonomi updated';
           notify(this.options, 'success', 3000);
           this.hide();
         } else {

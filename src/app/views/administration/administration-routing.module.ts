@@ -13,6 +13,7 @@ import { GroupProductComponent } from './group-product/group-product.component';
 import { ProgramKerjaComponent } from './program-kerja/program-kerja.component';
 import { RjppComponent } from './rjpp/rjpp.component';
 import { RKAPComponent } from './rkap/rkap.component';
+import { SatuanComponent } from './satuan/satuan.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,13 @@ const routes: Routes = [
         component: RKAPComponent,
         data: {
           title: 'RKAP'
+        }
+      },
+      {
+        path: 'satuan',
+        component: SatuanComponent,
+        data: {
+          title: 'Satuan'
         }
       },
     ]

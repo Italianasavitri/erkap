@@ -50,14 +50,16 @@
 
             <dxi-column dataField="rjppid" caption="RJPP ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sid" caption="Sasaran ID" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="codeid" caption="Code ID" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="prkid" caption="Program Kerja ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="nama_program" caption="Nama Program" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="plan_execute" caption="Plan Execute" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="pic" caption="PIC" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="indikator_hasil" caption="Indikator_Hasil" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="gid" caption="Group ID" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="indikator_satuan" caption="Indikator Satuan" [allowEditing]="false"></dxi-column>
-           
+            <dxi-column dataField="kode_program" caption="Kode Program" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="deskripsi" caption="Deskripsi" [allowEditing]="false"></dxi-column>
+
             <dxi-column [fixed]="true" width="55px" dataField="codeid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">

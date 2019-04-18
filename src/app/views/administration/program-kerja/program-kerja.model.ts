@@ -1,13 +1,15 @@
 export class ProgramKerja {
     rjppid: string;
     sid: number;
-    codeid: number;
+    prkid: number;
     nama_program: string;
     plan_execute: any;
     pic: string;
     indikator_hasil: string;
     gid: number;
     indikator_satuan: string;
+    kode_program: string;
+    deskripsi: string;
   }
   
   export class Menu {
@@ -26,7 +28,7 @@ export class ProgramKerja {
   }
   
   export class Search {
-    codeid: string;
+    prkid: string;
     nama_program: string;
     pic: string;
   }

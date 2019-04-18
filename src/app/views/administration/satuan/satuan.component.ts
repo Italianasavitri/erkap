@@ -1,19 +1,19 @@
 import {AfterViewInit, Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {DxDataGridComponent, DxCheckBoxComponent} from 'devextreme-angular';
-import {Search} from './program-kerja.model';
-import {ProgramKerjaService} from './program-kerja.service';
+import {Search} from './satuan.model';
+import {SatuanService} from './satuan.service';
 import notify from 'devextreme/ui/notify';
 import {convertRuleOptions} from 'tslint/lib/configuration';
 
 declare const $: any;
 
 @Component({
-  selector: 'app-program-kerja',
-  templateUrl: './program-kerja.component.html',
-  styleUrls: ['./program-kerja.component.scss'],
-  providers: [ProgramKerjaService]
+  selector: 'app-satuan',
+  templateUrl: './satuan.component.html',
+  styleUrls: ['./satuan.component.scss'],
+  providers: [SatuanService]
 })
-// export class ProgramKerjaComponent implements OnInit {
+// export class SatuanComponent implements OnInit {
 
 //   constructor() { }
 
@@ -21,8 +21,7 @@ declare const $: any;
 //   }
 
 // }
-
-export class ProgramKerjaComponent implements AfterViewInit {
+export class SatuanComponent implements AfterViewInit {
   @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
 
   contextItems: any;
@@ -59,18 +58,11 @@ export class ProgramKerjaComponent implements AfterViewInit {
 
   constructor(
     private elementRef: ElementRef,
-    @Inject(ProgramKerjaService) private programkerjaService: ProgramKerjaService
+    @Inject(SatuanService) private satuanService: SatuanService
   ) {
     this.search = {
-      //rjppid: '',
-      //sid: '',
-      prkid: '',
-      nama_program: '',
-      //plan_execute: '',
-      pic: '',
-      //indikator_hasil: '',
-      //gid: '',
-      //indikator_satuan: '',
+      satuanid: '',
+      satuan: '',
     };
 
     this.contextItems = [
@@ -94,7 +86,7 @@ export class ProgramKerjaComponent implements AfterViewInit {
       }
     ];
 
-    //this.programkerjaService.getAll()
+    //this.satuanService.getAll()
     //.subscribe(resp => {
     //  console.log(resp);
     //  this.gridDataSource = resp.d.list;
@@ -154,7 +146,7 @@ export class ProgramKerjaComponent implements AfterViewInit {
       this.maxLimitShow = Number(this.page);
     }
     
-    this.programkerjaService.getLimit(this.offset,this.limitVal)
+    this.satuanService.getLimit(this.offset,this.limitVal)
     .subscribe(resp => {
       console.log(resp);
       this.gridDataSource = resp.d.list;
@@ -166,7 +158,7 @@ export class ProgramKerjaComponent implements AfterViewInit {
   //end pagination
   
   refresh() {
-    this.programkerjaService.getAll().subscribe(resp => {
+    this.satuanService.getAll().subscribe(resp => {
       this.gridDataSource = resp.d.list;
     }, err => {
       console.log(err);
@@ -177,8 +169,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
   getRoleData() {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    this.programkerjaService.getAll().subscribe(resp => {
-      this.programkerjaService.getAllRoleAuth().subscribe(respAuth => {
+    this.satuanService.getAll().subscribe(resp => {
+      this.satuanService.getAllRoleAuth().subscribe(respAuth => {
         resp.forEach((value, index) => {
           const menus = [];
           const menu = respAuth.filter(element => {
@@ -211,7 +203,7 @@ export class ProgramKerjaComponent implements AfterViewInit {
     const d1 = this.elementRef.nativeElement.getElementsByClassName('dx-toolbar-before')[0];
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
-      text: 'Tambah Program Kerja Baru',
+      text: 'Tambah Satuan Baru',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;
@@ -232,8 +224,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
   }
 
   searching() {
-    this.programkerjaService.getByName(this.search.prkid).subscribe(resp => {
-      this.programkerjaService.getAllRoleAuth().subscribe(respAuth => {
+    this.satuanService.getByName(this.search.satuan).subscribe(resp => {
+      this.satuanService.getAllRoleAuth().subscribe(respAuth => {
         resp.forEach((value, index) => {
           const menus = [];
           const menu = respAuth.filter(element => {
@@ -253,8 +245,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
           resp[index].menu = menus;
         })
       });
-      if (this.search.prkid !== '') {
-        this.gridDataSource = resp.filter(role => role.roleName === this.search.prkid).filter(data => data.activationCode === 'Y');
+      if (this.search.satuan !== '') {
+        this.gridDataSource = resp.filter(role => role.roleName === this.search.satuan).filter(data => data.activationCode === 'Y');
       } else {
         this.gridDataSource = resp.filter(data => data.activationCode === 'Y');
       }
@@ -262,8 +254,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
   }
 
   advSearch() {
-    this.programkerjaService.getByData(this.search).subscribe(resp => {
-      this.programkerjaService.getAllRoleAuth().subscribe(respAuth => {
+    this.satuanService.getByData(this.search).subscribe(resp => {
+      this.satuanService.getAllRoleAuth().subscribe(respAuth => {
         resp.forEach((value, index) => {
           const menus = [];
           const menu = respAuth.filter(element => {
@@ -283,8 +275,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
           resp[index].menu = menus;
         })
       });
-      if (this.search.prkid !== '') {
-        this.gridDataSource = resp.filter(role => role.roleName === this.search.prkid).filter(data => data.activationCode === 'Y');
+      if (this.search.satuan !== '') {
+        this.gridDataSource = resp.filter(role => role.roleName === this.search.satuan).filter(data => data.activationCode === 'Y');
       } else {
         this.gridDataSource = resp.filter(data => data.activationCode === 'Y');
       }
@@ -357,8 +349,8 @@ export class ProgramKerjaComponent implements AfterViewInit {
   }
 
   onDeleteConf() {
-    this.programkerjaService.getById(this.target).subscribe(role => {
-      this.programkerjaService.delete(role.d).subscribe(resp => {
+    this.satuanService.getById(this.target).subscribe(role => {
+      this.satuanService.delete(role.d).subscribe(resp => {
         // this.getRoleData();
         notify({
           closeOnClick: true,

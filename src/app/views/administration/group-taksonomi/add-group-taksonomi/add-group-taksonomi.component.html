@@ -6,16 +6,14 @@
 
     <!-- class="m-2" => add margin by 0.5rem -->
     <div class="m-2"></div>
-      <p style="border-top: 1px rgb(196, 196, 196) solid; padding: 0px; margin: 0px;"></p>
+    <p style="border-top: 1px rgb(196, 196, 196) solid; padding: 0px; margin: 0px;"></p>
     <div class="m-2"></div>
 
     <dx-form [(formData)]="role" validationGroup="roleData">
       <dxi-item itemType="group" [colCount]="2">
         <dxi-item itemType="group">
-          <dxi-item name="txtGID" dataField="gid" caption="Group Product ID" editorType="dxTextBox" [editorOptions]="{readOnly: true}"></dxi-item>
-          <dxi-item name="txtParent_gid" dataField="parent_gid" caption="Parent GID" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
-          <dxi-item name="txtKode" dataField="kode" caption="Kode" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
-          <dxi-item name="txtNama" dataField="nama" caption="Nama" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
+          <dxi-item name="txtRoleID" dataField="gid" caption="Group Taksonomi Id" editorType="dxTextBox" [editorOptions]="{readOnly: true}"></dxi-item>
+          <dxi-item name="txtKeterangan" dataField="nama_group" caption="Nama Group" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
           
         </dxi-item>
         <dxi-item itemType="group">
@@ -24,7 +22,6 @@
       </dxi-item>
     </dx-form>
     <br>
-
     <!-- <p>Menu Access :</p> -->
     <dx-tree-list
       [dataSource]="menuTree"
@@ -48,7 +45,6 @@
       <dxi-column dataField="read"></dxi-column>
       <dxi-column dataField="write"></dxi-column> -->
     </dx-tree-list>
-    
     <app-form-confirmation [isSave]="isSave" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="save()" (onHideConf)="onHideConf()"
       (onSaveConf)="onSaveConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
   </form>

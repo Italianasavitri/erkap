@@ -71,6 +71,10 @@ import { AddGroupProductComponent } from './group-product/add-group-product/add-
 import { AddProgramKerjaComponent } from './program-kerja/add-program-kerja/add-program-kerja.component';
 import { AddRKAPComponent } from './rkap/add-rkap/add-rkap.component';
 import { AddRJPPComponent } from './rjpp/add-rjpp/add-rjpp.component';
+import { SatuanComponent } from './satuan/satuan.component';
+import { AddSatuanComponent } from './satuan/add-satuan/add-satuan.component';
+import { GroupTaksonomiComponent } from './group-taksonomi/group-taksonomi.component';
+import { AddGroupTaksonomiComponent } from './group-taksonomi/add-group-taksonomi/add-group-taksonomi.component';
 
 @NgModule({
   imports: [
@@ -125,7 +129,11 @@ import { AddRJPPComponent } from './rjpp/add-rjpp/add-rjpp.component';
     AddGroupProductComponent,
     AddProgramKerjaComponent,
     AddRKAPComponent,
-    AddRJPPComponent
+    AddRJPPComponent,
+    SatuanComponent,
+    AddSatuanComponent,
+    GroupTaksonomiComponent,
+    AddGroupTaksonomiComponent
   ],
   exports: [
   ],

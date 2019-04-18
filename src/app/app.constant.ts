@@ -17,6 +17,7 @@ export class AppConstant {
       // this.SERVER_URL = 'http://10.14.153.41:1366';
       // this.SERVER_URL = 'http://localhost:1366';
       // icofr
+      
       // this.SERVER_URL = 'http://10.14.22.209:8080/erkap-webservice';
        this.SERVER_URL = 'http://localhost:9092';
       //http://10.14.22.209:8080/erkap-webservice

@@ -1,15 +1,19 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
 
+    <!-- Header -->
     <div class="card-header">
       <strong>RJPP <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
     </div>
+    <!-- End Header -->
 
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
+
+        <!-- Search -->
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
 
           <div *ngIf="!isAdv">
@@ -41,8 +45,11 @@
             </dx-form>
           </div>
           <!-- END ADVANCED SEARCH -->
-        </div>
 
+        </div>
+        <!-- End Search -->
+
+        <!-- Table -->
         <div id="data-grid-demo" style="margin-top: 20px;">
           <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
                         [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true">
@@ -54,7 +61,7 @@
             <dxo-export [enabled]="true" fileName="RJPP" [allowExportSelectedData]="false"></dxo-export>
 
             <dxi-column dataField="rjppid" caption="RJPP ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="periode" caption="Periode" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="periode" caption="Judul Periode" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="description" caption="Description" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="notes" caption="Notes" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="start_year" caption="Start Year" [allowEditing]="false"></dxi-column>
@@ -70,6 +77,7 @@
           <app-context [menuVisible]="menuVisible" [target]="target" [contextItems]="contextItems" (onHideMenu)="onHideMenu()" (itemClick)="itemClick($event)"></app-context>
           <app-progress [progressVisible]="progressVisible" [progressContent]="progressContent" [progressTitle]="progressTitle" (onHideProgresss)="onHideProgress()"></app-progress>
         </div>
+        <!-- End Table -->
 
         <!-- pagination -->
         <div class="row">
@@ -97,11 +105,13 @@
         <!-- end pagination -->
 
       </div>
+
       <div *ngIf="addVisible">
         <app-add-rjpp [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-rjpp>
       </div>
       <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
                              (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
     </div>
+    
   </div>
 </div>

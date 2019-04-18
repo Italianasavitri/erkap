@@ -4,18 +4,33 @@ import { HttpClient } from '@angular/common/http';
 import { AppConstant } from '../../../app.constant';
 import { Sasaran, KategoriAktif } from './sasaran.model';
 
-const simpleProducts: string[] = [ 'Y', 'N' ];
+const simpleProducts: string[] = [ 'Pelanggan', 'Menit', '%', 'Hari', 'Lokasi', 'Unit', 'Level' ];
+const simpleProducts2: string[] = [ 'Sasaran Strategis', 'Sasaran Objective', 'Sasaran Inisiatif' ];
+const perspektif: string[] = [ 'Financial', 'Fokus Pelanggan', 'Efektifitas Produk dan Prodses', 'Kepemimpinan Tata Kelola dan Tanggung Jawab Kemanusiaan', 'Fokus Tenaga Kerja' ];
 
 @Injectable()
 export class SasaranService {
   private resourceUrlRole = this.a.SERVER_URL + '/system/Sasaran';
   private resourceUrlRoleAuth = this.a.SERVER_URL + '/role_menu_authorization';
   private resourceUrlMenu = this.a.SERVER_URL + '/menu_tab';
+  private resourceUrlRjppku = this.a.SERVER_URL + '/rjpp';
 
   constructor(private http: HttpClient, private a: AppConstant) {}
 
   getSimpleProducts(): string[] {
     return simpleProducts;
+  }
+
+  getSimpleProducts2(): string[] {
+    return simpleProducts2;
+  }
+
+  getPerspektif(): string[] {
+    return perspektif;
+  }
+
+  getRjppku(): any {
+    return this.http.get(this.resourceUrlRole + '/list');
   }
 
   getById(id: any): Observable<any> {

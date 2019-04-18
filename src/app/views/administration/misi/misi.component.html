@@ -1,11 +1,15 @@
 <div class="animated fadeIn">
   <div class="card" id="new47">
+
+    <!-- Header -->
     <div class="card-header">
       <strong>Misi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
     </div>
+    <!-- End Header -->
+
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
         <div id="form-container" style="margin-left: 20px; margin-right: 20px;">

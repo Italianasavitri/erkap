@@ -33,6 +33,9 @@ import { MatButtonToggleGroupMultiple } from '@angular/material';
   role: Sasaran;
   isallowregistration: boolean;
   simpleProducts: string[];
+  simpleProducts2: string[];
+  perspektif: string[];
+  rjppku: any;
   daftarKategori: KategoriAktif[];
   // cekAktif: boolean;
   previousValue: boolean;
@@ -54,6 +57,9 @@ import { MatButtonToggleGroupMultiple } from '@angular/material';
 
   constructor(private sasaranService: SasaranService) {
     this.simpleProducts = sasaranService.getSimpleProducts();
+    this.simpleProducts2 = sasaranService.getSimpleProducts2();
+    this.perspektif = sasaranService.getPerspektif();
+    this.rjppku = sasaranService.getRjppku();
     
     this.role = {
        rjppid: null,
